@@ -131,7 +131,7 @@ Barrels.prototype.populate = function(collections, done, autoAssociations) {
     var Model = sails.models[modelName];
     if (Model) {
       // Cleanup existing data in the table / collection
-      Model.destroy().exec(function(err) {
+      Model.destroy({}).exec(function(err) {
         if (err)
           return nextModel(err);
 

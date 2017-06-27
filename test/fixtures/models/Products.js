@@ -3,11 +3,11 @@
  */
 
 module.exports = {
+    primaryKey: 'customId',
   attributes: {
     customId: {
-      type: 'integer',
-      autoIncrement: true,
-      primaryKey: true
+      type: 'number',
+      autoIncrement: true
     },
     name: 'string',
     category: {
@@ -24,8 +24,7 @@ module.exports = {
     },
     regions: {
       collection: 'regions',
-      via: 'products',
-      required: true
+      via: 'products'
     }
   }
 };

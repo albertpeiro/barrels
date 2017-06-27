@@ -37,17 +37,29 @@ describe('Barrels', function() {
           models: require('path').join(process.cwd(),
             'test/fixtures/models')
         },
-        connections: {
-          test: {
-            adapter: 'sails-memory'
+        globals: {
+          sails: true,
+          models: true,
+          _: false,
+          async: false
+        },
+        datastores: {
+          default: {
+            adapter: 'sails-disk'
           }
         },
         models: {
-          connection: 'test',
-          migrate: 'drop'
+          datastore: 'default',
+          migrate: 'drop',
+        attributes: {
+            createdAt: { type: 'number', autoCreatedAt: true, },
+            updatedAt: { type: 'number', autoUpdatedAt: true, },
+            id: { type: 'number', autoIncrement: true, required: true }
+        },
         },
         hooks: {
-          grunt: false
+          grunt: false,
+          session: false
         }
       }, function(err, sails) {
         done(err);
